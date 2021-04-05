@@ -189,7 +189,8 @@ export class Container extends React.Component {
 
                         At random drops, you will have the chance to collect/buy your menstrual products. Each product costs 2 coins.
                         If you don't have enough money at that point, you won't be able to collect.<br/>
-                        If you don't collect at least 4 products after one cycle (all the questions) and the time isn't over, you must begin again.<br/>
+                        If you don't collect at least 4 products after one cycle (all the questions) and the time isn't over, you must begin again.
+                        The collection points will change, but the questions won't.<br/>
                         If the time ends before you collect at least 4 products, you lose.<br/>
                         In short, the objective is to <b>break the cycle</b> - literally, so you learn how to contribute to breaking the period poverty cycle, so girls everywhere can have their cycles without sacrificing their education and/or health.
                         <button style={{display: "block", margin: "2rem auto"}} onClick={() => this.startGame()}>play</button>
@@ -206,6 +207,7 @@ export class Container extends React.Component {
                         products={this.state.products}
                         time={this.state.time}
                         stop={this.state.stop}
+                        showInstructions={() => this.setState({ showInstructions: true })}
                     />
                     <h1 className="title">{this.state.message}</h1>
                     <div className="game-over">
