@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/codehers2021/static/css/main.729dde8d.chunk.css",
-    "main.js": "/codehers2021/static/js/main.57452e5c.chunk.js",
-    "main.js.map": "/codehers2021/static/js/main.57452e5c.chunk.js.map",
+    "main.js": "/codehers2021/static/js/main.bcb6f07f.chunk.js",
+    "main.js.map": "/codehers2021/static/js/main.bcb6f07f.chunk.js.map",
     "runtime-main.js": "/codehers2021/static/js/runtime-main.e17387e0.js",
     "runtime-main.js.map": "/codehers2021/static/js/runtime-main.e17387e0.js.map",
     "static/css/2.4afd7498.chunk.css": "/codehers2021/static/css/2.4afd7498.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.4afd7498.chunk.css",
     "static/js/2.505fbe34.chunk.js",
     "static/css/main.729dde8d.chunk.css",
-    "static/js/main.57452e5c.chunk.js"
+    "static/js/main.bcb6f07f.chunk.js"
   ]
 }
