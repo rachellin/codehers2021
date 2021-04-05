@@ -156,9 +156,9 @@ export class Container extends React.Component {
             dayColor: Array(questions.length).fill("lightgray"),
             isAnswered: Array(questions.length).fill(false),
             isCorrect: Array(questions.length).fill(false),
-            hasProduct: [false, false, true, false, true, false, false, true, true, false], // should change it for this cycle
             isCollected: Array(questions.length).fill(false)  
-        })
+        });
+        this.insertProducts();
     }
 
     render() {
