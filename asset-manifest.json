@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/codehers2021/static/css/main.729dde8d.chunk.css",
+    "main.js": "/codehers2021/static/js/main.57452e5c.chunk.js",
+    "main.js.map": "/codehers2021/static/js/main.57452e5c.chunk.js.map",
+    "runtime-main.js": "/codehers2021/static/js/runtime-main.e17387e0.js",
+    "runtime-main.js.map": "/codehers2021/static/js/runtime-main.e17387e0.js.map",
+    "static/css/2.4afd7498.chunk.css": "/codehers2021/static/css/2.4afd7498.chunk.css",
+    "static/js/2.505fbe34.chunk.js": "/codehers2021/static/js/2.505fbe34.chunk.js",
+    "static/js/2.505fbe34.chunk.js.map": "/codehers2021/static/js/2.505fbe34.chunk.js.map",
+    "static/js/3.41e7c2c3.chunk.js": "/codehers2021/static/js/3.41e7c2c3.chunk.js",
+    "static/js/3.41e7c2c3.chunk.js.map": "/codehers2021/static/js/3.41e7c2c3.chunk.js.map",
+    "index.html": "/codehers2021/index.html",
+    "static/css/2.4afd7498.chunk.css.map": "/codehers2021/static/css/2.4afd7498.chunk.css.map",
+    "static/css/main.729dde8d.chunk.css.map": "/codehers2021/static/css/main.729dde8d.chunk.css.map",
+    "static/js/2.505fbe34.chunk.js.LICENSE.txt": "/codehers2021/static/js/2.505fbe34.chunk.js.LICENSE.txt",
+    "static/media/remixicon.css": "/codehers2021/static/media/remixicon.f2616f59.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e17387e0.js",
+    "static/css/2.4afd7498.chunk.css",
+    "static/js/2.505fbe34.chunk.js",
+    "static/css/main.729dde8d.chunk.css",
+    "static/js/main.57452e5c.chunk.js"
+  ]
+}
