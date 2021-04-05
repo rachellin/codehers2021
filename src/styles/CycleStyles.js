@@ -5,13 +5,17 @@ import styled from 'styled-components';
 // `;
 
 export const StyledCycle = styled.div`
-    margin: auto;
-    width: 50vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 500px;
+    border: 1px solid #eee;
 `;
 
 export const Circle = styled.div`
-    margin-top:100px;
-    margin-bottom:100px;
+    //margin-top:100px;
+    //margin-bottom:100px;
     position:relative;
     width: ${props => props.circleSize}px;
     height: ${props => props.circleSize}px;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { questions } from './data';
+import { Timer } from './Timer';
 
 import { Stats } from './Stats';
 import { Cycle } from './Cycle';
@@ -9,18 +10,36 @@ export class Container extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
+            message: "Break the Cycle",
+            timeOver: false,
+            time: 5,
             money: 0,
-            openQuestion: Array(2).fill(false),
-            dayColor: Array(2).fill("lightgray"),
-            isAnswered: Array(2).fill(false),
-            isCorrect: Array(2).fill(false)
+            products: 0,
+            openQuestion: Array(questions.length).fill(false),
+            dayColor: Array(questions.length).fill("lightgray"),
+            isAnswered: Array(questions.length).fill(false),
+            isCorrect: Array(questions.length).fill(false),
+            hasProduct: Array(questions.length).fill(false), // temp
+            isCollected: Array(questions.length).fill(false) // what if there is no product? just false i guess 
         }
+    }
+
+    componentDidMount() {
+        this.setState({
+            hasProduct: [false, false, true, false, true, false, false, true, true, false]
+        })
+        setTimeout(() => {
+            this.setState({ timeOver: true });
+        }, 1000*5) // TODO: shouldnt be hardcoded 
     }
 
     handleClick(i) {
         let openQuestionCopy = this.state.openQuestion.slice();
+        let hasProductCopy = this.state.hasProduct.slice();
         openQuestionCopy[i] = true;
-        this.setState({ openQuestion: openQuestionCopy });
+        this.setState({
+            openQuestion: openQuestionCopy,
+        });
     }
 
     answerQuestion(questionIndex, answerIndex) {
@@ -51,8 +70,9 @@ export class Container extends React.Component {
         openQuestionCopy[i] = false;
         if (this.state.isCorrect[i]) {
             dayColorCopy[i] = "lightgreen";
+            this.setState({ money: this.state.money+1 });
         } else {
-            dayColorCopy[i] = "lightpink";
+            dayColorCopy[i] = "red";
         }
         this.setState({
             openQuestion: openQuestionCopy,
@@ -60,17 +80,61 @@ export class Container extends React.Component {
         });
     }
 
+    // collect product 
+    collect(i) {
+        if (this.state.money >= 2) {
+            this.setState({
+                money: this.state.money - 2,
+                products: this.state.products + 1
+            });
+        }
+        let isCollectedCopy = this.state.isCollected.slice();
+        isCollectedCopy[i] = true;
+        this.setState({ isCollected: isCollectedCopy });
+    }
+
+    checkWin() {
+        if (this.state.timeOver && this.state.products < 3) {
+            return false;
+        } else if (this.state.products >= 3) {
+            return true;
+        } else if (this.state.products < 3 && !this.state.timeOver) {
+            this.restartCycle();
+        }
+    }
+
+    restartCycle() {
+        this.setState({
+            openQuestion: Array(questions.length).fill(false),
+            dayColor: Array(questions.length).fill("lightgray"),
+            isAnswered: Array(questions.length).fill(false),
+            isCorrect: Array(questions.length).fill(false),
+            hasProduct: [false, false, true, false, true, false, false, true, true, false], // should change it for this cycle
+            isCollected: Array(questions.length).fill(false)  
+        })
+    }
+
     render() {
         return (
             <StyledContainer>
-                <Stats money={this.state.money}/>
+                <Stats 
+                    money={this.state.money}
+                    products={this.state.products}
+                    time={this.state.time}
+                />
+                <h1 className="title">{this.state.message}</h1>
                 <Cycle
                     openQuestion={this.state.openQuestion}
                     dayColor={this.state.dayColor}
                     isAnswered={this.state.isAnswered}
+                    isCorrect={this.state.isCorrect}
+                    hasProduct={this.state.hasProduct}
+                    isCollected={this.state.isCollected}
+                    money={this.state.money}
                     onClick={(i) => this.handleClick(i)}
                     answerQuestion={(i, answerIndex) => this.answerQuestion(i, answerIndex)}
                     clickNext={(i) => this.handleClickNext(i)}
+                    collect={(i) => this.collect(i)}
                 />
             </StyledContainer>
         )

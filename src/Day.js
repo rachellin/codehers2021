@@ -12,14 +12,20 @@ export class Day extends React.Component {
             answers={questions[i].answers.map(
                 (ans, i) => <div className="answer" onClick={() => this.props.answerQuestion(i)}>{ans}</div>)}
             info={questions[i].info}
+            hasProduct={this.props.hasProduct}
+            isCollected={this.props.isCollected}
             isAnswered={this.props.isAnswered}
+            isCorrect={this.props.isCorrect}
+            money={this.props.money}
             clickNext={() => this.props.clickNext(i)}
+            collect={() => this.props.collect(i)}
         />
     }
 
     render() {
         return (
             <>
+                {this.props.openQuestion ? this.generateQuestion(this.props.index) : null }
                 <StyledDay 
                     style={this.props.style} 
                     onClick={this.props.onClick}
@@ -27,7 +33,6 @@ export class Day extends React.Component {
                 >
                     <i style={this.props.iconStyle} className="ri-drop-fill"></i>
                 </StyledDay>
-                {this.props.openQuestion ? this.generateQuestion(this.props.index) : null }
             </>
         )
     }
