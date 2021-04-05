@@ -44,7 +44,7 @@ export const StyledQuestion = styled.div`
     width: 50vw;
     border-radius: 2rem;
     padding: 2rem;
-    background: lightpink;
+    background: #ffe4e1;
     z-index:9999;
 
     .answer {
@@ -60,7 +60,7 @@ export const StyledQuestion = styled.div`
 
     .close, .collect {
         display: block;
-        margin: auto;
+        margin: 2rem auto;
     }
 
 `;

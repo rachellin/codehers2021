@@ -16,7 +16,7 @@ export class Container extends React.Component {
             showInstructions: true,
             startGame: false,
             stop: false,
-            time: 60*10,
+            time: 60*7,
             money: 0,
             products: 0,
             openQuestion: Array(questions.length).fill(false),
@@ -30,9 +30,7 @@ export class Container extends React.Component {
 
     componentDidMount() {
         console.log("length: "+questions.length)
-        this.setState({
-            hasProduct: [false, false, true, false, true, false, false, true, true, false]
-        })
+        this.insertProducts();
         setInterval(() => {
             if (this.state.products >= 3) {
                 this.setState({ stop: true });
@@ -43,6 +41,23 @@ export class Container extends React.Component {
                 this.restartCycle();
             }
         }, 1000)
+    }
+
+    insertProducts() {
+        let random;
+        let spots = [];
+        let hasProductCopy = this.state.hasProduct.slice();
+        for (let i = 0; i < 6; i++) {
+            while (spots.includes(random)) {
+                random = Math.floor(Math.random()*14);
+            }
+            spots.push(random);
+        }
+        for (let i = 0; i < spots.length; i++) {
+            hasProductCopy[spots[i]] = true;
+        }
+        this.setState({ hasProduct: hasProductCopy });
+        console.log(hasProductCopy);
     }
 
     startGame() {
@@ -82,7 +97,6 @@ export class Container extends React.Component {
             isAnswered: isAnsweredCopy,
             isCorrect: isCorrectCopy
         });
-        // TODO: stop time when user is reading info?
     }
 
     // possibly combine with handleClick? 
@@ -115,7 +129,6 @@ export class Container extends React.Component {
         this.setState({ isCollected: isCollectedCopy });
     }
 
-    // where to put this 
     checkWin() {
         if (this.state.timeOver && this.state.products < 3) {
             this.setState({ gameOver: true });

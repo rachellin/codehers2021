@@ -20,7 +20,7 @@ export const Circle = styled.div`
     width: ${props => props.circleSize}px;
     height: ${props => props.circleSize}px;
     border-radius: 50%;
-    border:1px solid black;
+    border:1px solid palevioletred;
     text-align: center;
 
     > i {
