@@ -13,6 +13,7 @@ export class Container extends React.Component {
             message: "Break the Cycle",
             timeOver: false,
             gameOver: false,
+            showInstructions: true,
             stop: false,
             time: 1000,
             money: 0,
@@ -27,6 +28,7 @@ export class Container extends React.Component {
     }
 
     componentDidMount() {
+        console.log("length: "+questions.length)
         this.setState({
             hasProduct: [false, false, true, false, true, false, false, true, true, false]
         })
@@ -44,6 +46,10 @@ export class Container extends React.Component {
             this.setState({ timeOver: true });
             this.gameOver();
         }, 1000*this.state.time) 
+    }
+
+    startGame() {
+        this.setState({ showInstructions: false });
     }
 
     handleClick(i) {
@@ -141,6 +147,27 @@ export class Container extends React.Component {
     }
 
     render() {
+        if (this.state.showInstructions) {
+            return (
+                <StyledContainer>
+                    {/* stats? */}
+                    <h1 className="title">Break the Cycle</h1>
+                    <div className="instructions">
+                        instructions. how to make time zero here then start later <br/>
+                        Welcome to Break the Cycle! <br/>
+                        There are 14 drops on the circle - each respresenting 2 days in an average menstrual cycle (28 days).<br/>
+                        Click on each drop to answer questions about menstruation and period poverty. 
+                        The answer will be revealed after you choose your response. 
+                        The timer will not stop while you read the correct answer, but make sure you absorb the information!
+                        It's important to learn for the sake of understanding period poverty - and to win the game, of course. <br/>
+                        If you don't collect at least 3 products after one cycle (all the questions) and the time isn't over, you must begin again.
+                        In short, the objective is to <b>break the cycle</b> - literally, so you learn how to contribute to breaking the period poverty cycle.
+                        <button style={{display: "block", margin: "2rem auto"}} onClick={() => this.startGame()}>play</button>
+                    </div>
+                </StyledContainer>
+            )
+        }
+
         if (this.state.gameOver) {
             return (
                 <StyledContainer>
@@ -165,6 +192,7 @@ export class Container extends React.Component {
                     products={this.state.products}
                     time={this.state.time}
                     stop={this.state.stop}
+                    showInstructions={() => this.setState({ showInstructions: true })}
                 />
                 <h1 className="title">{this.state.message}</h1>
                 <Cycle

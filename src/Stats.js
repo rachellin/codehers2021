@@ -17,8 +17,14 @@ export class Stats extends React.Component {
                 <StyledStats>
                     <Timer time={this.props.time} stop={this.props.stop}/>
                 </StyledStats>
+                <StyledStats style={{cursor: "pointer"}} onClick={() => this.props.showInstructions()}>
+                    instructions
+                </StyledStats>
+                    
             </div>
         )
     }
 }
+
+// how to show instructions w/o starting over
 

@@ -10,7 +10,7 @@ export const StyledCycle = styled.div`
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     width: 500px;
-    border: 1px solid #eee;
+    //border: 1px solid #eee;
 `;
 
 export const Circle = styled.div`

@@ -109,6 +109,54 @@ export const questions = [
         ],
         correct: 2,
         info: "Period poverty is not just a lack of access to products. Providing girls and women with products is not enough; menstruation education is also crucial to solving the period poverty challenge."
+    },
+    {
+        question: "<h1>All menstrual cycles last 28 days. True or false?</h1>",
+        answers: [
+            "True",
+            "False"
+        ],
+        correct: 1,
+        info: "A menstrual cycle can range anywhere from 21 days to 35 days depending on age and various health factors. The average menstrual cycle is 28 days, but a shorter or longer cycle doesn’t necessarily mean your health is at risk."
+    },
+    {
+        question: `
+        <h1>Which are the possible effects of amenorrhea?</h1>
+        i. infertility <br>
+        ii. death<br>
+        iii. none; I'd rather not have my period<br>
+        iv. osteoporosis (bone density loss)<br>
+        v. increased risk of heart and blood vessel disorders
+        `,
+        answers: [
+            "I only",
+            "I, II",
+            "I, IV, V",
+            "III",
+            "I and IV"
+        ],
+        correct: 2,
+        info: "Amenorrhea causes osteoporosis because estrogen levels drop and stay low. You may be delighted for your period to be gone, but if amenorrhea isn't treated, you will face the consequences long-term. Amenorrhea may also lead to infertility and pregnancy problems, and even an increased risk of heart and blood vessel disorders."
+    },
+    {
+        question: "<h1>When proper products are not available, girls resort to using socks, dishrags, and newspapers. True or false?</h1>",
+        answers: [
+            "True",
+            "False"
+        ],
+        correct: 0,
+        info: "Lack of affordability and information have led many young women to use only one tampon per day or one pad for multiple days. When they lack access to products completely, women are often forced to use alternatives such as socks, dishrags, and newspapers during their periods."
+    },
+    {
+        question: "<h1>In Kenya, it is reported that _ of females are unable to afford menstrual hygiene products.</h1>",
+        answers: [
+            "50%",
+            "65%",
+            "40%",
+            "80%"
+        ],
+        correct: 1,
+        info: "In Kenya, it is reported that 65% of females are unable to afford menstrual hygiene products. In addition, many rural schools lack private places for girls to change their menstrual products, causing numerous instances of gender-based violence around the non-private toilet facilities."
     }
 ]
 

@@ -12,9 +12,14 @@ export const StyledContainer = styled.div`
         transform: translateX(-50%);
     }
 
-    .game-over {
+    .game-over, .instructions {
         text-align: center;
         margin-top: 6rem;
+    }
+
+    .instructions {
+        width: 50vw;
+        margin: 6rem auto;
     }
 `;
 
