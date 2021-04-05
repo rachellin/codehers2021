@@ -14,8 +14,9 @@ export class Container extends React.Component {
             timeOver: false,
             gameOver: false,
             showInstructions: true,
+            startGame: false,
             stop: false,
-            time: 1000,
+            time: 60*10,
             money: 0,
             products: 0,
             openQuestion: Array(questions.length).fill(false),
@@ -42,14 +43,15 @@ export class Container extends React.Component {
                 this.restartCycle();
             }
         }, 1000)
-        setTimeout(() => {
-            this.setState({ timeOver: true });
-            this.gameOver();
-        }, 1000*this.state.time) 
     }
 
     startGame() {
         this.setState({ showInstructions: false });
+        if (!this.state.startGame) this.setState({ startGame: true });
+        setTimeout(() => {
+            this.setState({ timeOver: true });
+            this.gameOver();
+        }, 1000*this.state.time) 
     }
 
     handleClick(i) {
@@ -150,18 +152,30 @@ export class Container extends React.Component {
         if (this.state.showInstructions) {
             return (
                 <StyledContainer>
-                    {/* stats? */}
+                    {this.state.startGame ? 
+                        <Stats 
+                            money={this.state.money}
+                            products={this.state.products}
+                            time={this.state.time}
+                            stop={this.state.stop}
+                        />
+                    : 
+                        null
+                    }
                     <h1 className="title">Break the Cycle</h1>
                     <div className="instructions">
                         instructions. how to make time zero here then start later <br/>
-                        Welcome to Break the Cycle! <br/>
-                        There are 14 drops on the circle - each respresenting 2 days in an average menstrual cycle (28 days).<br/>
+                        Welcome to Break the Cycle! <br/><br/>
+                        There are 14 (blood) drops on the circle - each respresenting 2 days in an average menstrual cycle (28 days).<br/>
                         Click on each drop to answer questions about menstruation and period poverty. 
                         The answer will be revealed after you choose your response. 
                         The timer will not stop while you read the correct answer, but make sure you absorb the information!
-                        It's important to learn for the sake of understanding period poverty - and to win the game, of course. <br/>
-                        If you don't collect at least 3 products after one cycle (all the questions) and the time isn't over, you must begin again.
-                        In short, the objective is to <b>break the cycle</b> - literally, so you learn how to contribute to breaking the period poverty cycle.
+                        It's important to learn for the sake of understanding period poverty - and to win the game, of course. <br/><br/>
+
+                        At random drops, you will have the chance to collect/buy your menstrual products. Each product costs 2 coins.<br/>
+                        If you don't collect at least 4 products after one cycle (all the questions) and the time isn't over, you must begin again.<br/>
+                        If the time ends before you collect at least 4 products, you lose.<br/>
+                        In short, the objective is to <b>break the cycle</b> - literally, so you learn how to contribute to breaking the period poverty cycle, so girls everywhere can have their cycles without sacrificing their education and/or health.
                         <button style={{display: "block", margin: "2rem auto"}} onClick={() => this.startGame()}>play</button>
                     </div>
                 </StyledContainer>
@@ -179,7 +193,16 @@ export class Container extends React.Component {
                     />
                     <h1 className="title">{this.state.message}</h1>
                     <div className="game-over">
-                        game over info
+                        <p>Period poverty is the inadequate access to menstrual hygiene tools and education. This issue affects people all over the globe, including the US. Period poverty has been shown to directly affect a girl’s potential to succeed. If a girl misses school every time she has her period, she is set <b>145 days</b> behind her male counterparts. The longer it took for you to collect the products in this game, the more school you would've missed. Most girls in the developing world choose to drop out of school altogether rather than face the embarrassment and shame of being unprepared for their cycles.</p>
+                        <b>Here's how you can help:</b>
+                        <ul>
+                            <li>buy your products from brands that give back (Always, Pink Parcel)</li>
+                            <li>donate: <a target="_blank" href="http://thehomelessperiod.com/">The Homeless Period</a>, <a target="_blank" href="http://redboxproject.org/">The Red Box Project</a>, <a target="_blank" href="https://freedom4girls.wordpress.com/">Freedom4Girls</a></li>
+                            <li>sign petitions</li>
+                            <li>go on marches</li>
+                            <li>raise awareness</li>
+                            <li>educate yourself: hopefully, you've learned more from this game!</li>
+                        </ul>
                     </div>
                 </StyledContainer>
             )

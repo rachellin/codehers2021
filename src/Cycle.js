@@ -39,7 +39,7 @@ export class Cycle extends React.Component {
         return (
             <StyledCycle>
                 <Circle circleSize={circleSize}>
-                    {/* center icon here */} 
+                    {/* center icon here */} <i className="ri-moon-clear-line"></i>
                     {this.generateDays(circleSize)}
                 </Circle>
             </StyledCycle>

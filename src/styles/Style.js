@@ -15,11 +15,12 @@ export const StyledContainer = styled.div`
     .game-over, .instructions {
         text-align: center;
         margin-top: 6rem;
-    }
-
-    .instructions {
         width: 50vw;
         margin: 6rem auto;
+
+        ul {
+            text-align: left;
+        }
     }
 `;
 

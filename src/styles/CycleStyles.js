@@ -21,9 +21,10 @@ export const Circle = styled.div`
     height: ${props => props.circleSize}px;
     border-radius: 50%;
     border:1px solid black;
+    text-align: center;
 
     > i {
-        font-size:125px;
+        font-size:250px;
         line-height:2em;
     }
 
