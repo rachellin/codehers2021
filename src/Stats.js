@@ -15,7 +15,7 @@ export class Stats extends React.Component {
                     products: {this.props.products}
                 </StyledStats>
                 <StyledStats>
-                    <Timer time={this.props.time}/>
+                    <Timer time={this.props.time} stop={this.props.stop}/>
                 </StyledStats>
             </div>
         )

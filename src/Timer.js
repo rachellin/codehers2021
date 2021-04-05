@@ -3,7 +3,7 @@ import React from 'react';
 export class Timer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { time: {}, seconds: this.props.time };
+        this.state = { time: {}, seconds: this.props.time, stop: this.props.stop };
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
@@ -30,12 +30,19 @@ export class Timer extends React.Component {
         let timeLeftVar = this.secondsToTime(this.state.seconds);
         this.setState({ time: timeLeftVar });
         this.startTimer();
+        setInterval(() => {
+            this.setState({ stop: this.props.stop });
+        }, 500); // idk if decreasing this acc helps bc countdown is still 1 sec interval
     }
 
     startTimer() {
         if (this.timer == 0 && this.state.seconds > 0) {
             this.timer = setInterval(this.countDown, 1000);
         }
+    }
+
+    stop() {
+        this.setState({ stop: true });
     }
 
     countDown() {
@@ -45,7 +52,7 @@ export class Timer extends React.Component {
             time: this.secondsToTime(seconds),
             seconds: seconds,
         });
-        if (this.state.seconds == 0) { 
+        if (this.state.seconds == 0 || this.state.stop) { 
             clearInterval(this.timer);
         }
     }

@@ -13,6 +13,7 @@ export class Container extends React.Component {
             message: "Break the Cycle",
             timeOver: false,
             gameOver: false,
+            stop: false,
             time: 1000,
             money: 0,
             products: 0,
@@ -31,8 +32,9 @@ export class Container extends React.Component {
         })
         setInterval(() => {
             if (this.state.products >= 3) {
+                this.setState({ stop: true });
                 this.gameOver();
-                clearInterval()
+                clearInterval();
             }
         }, 1000)
         setTimeout(() => {
@@ -69,6 +71,7 @@ export class Container extends React.Component {
             isAnswered: isAnsweredCopy,
             isCorrect: isCorrectCopy
         });
+        // TODO: stop time when user is reading info?
     }
 
     // possibly combine with handleClick? 
@@ -140,6 +143,7 @@ export class Container extends React.Component {
                         money={this.state.money}
                         products={this.state.products}
                         time={this.state.time}
+                        stop={this.state.stop}
                     />
                     <h1 className="title">{this.state.message}</h1>
                     <div className="game-over">
@@ -155,6 +159,7 @@ export class Container extends React.Component {
                     money={this.state.money}
                     products={this.state.products}
                     time={this.state.time}
+                    stop={this.state.stop}
                 />
                 <h1 className="title">{this.state.message}</h1>
                 <Cycle
