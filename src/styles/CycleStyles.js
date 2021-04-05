@@ -53,7 +53,7 @@ export const StyledDay = styled.div`
     }
 
     :hover {
-        cursor: pointer;
+        cursor: ${props => props.isAnswered ? "default" : "pointer"};
     }
 `;
 

@@ -28,8 +28,9 @@ export class Day extends React.Component {
                 {this.props.openQuestion ? this.generateQuestion(this.props.index) : null }
                 <StyledDay 
                     style={this.props.style} 
-                    onClick={this.props.onClick}
+                    onClick={this.props.isAnswered ? null : this.props.onClick}
                     dayColor={this.props.dayColor}
+                    isAnswered={this.props.isAnswered}
                 >
                     <i style={this.props.iconStyle} className="ri-drop-fill"></i>
                 </StyledDay>
