@@ -91,10 +91,10 @@ export class Container extends React.Component {
         let dayColorCopy = this.state.dayColor.slice();
         openQuestionCopy[i] = false;
         if (this.state.isCorrect[i]) {
-            dayColorCopy[i] = "lightgreen";
+            dayColorCopy[i] = "red";
             this.setState({ money: this.state.money+1 });
         } else {
-            dayColorCopy[i] = "red";
+            dayColorCopy[i] = "lightgreen";
         }
         this.setState({
             openQuestion: openQuestionCopy,
@@ -164,7 +164,6 @@ export class Container extends React.Component {
                     }
                     <h1 className="title">Break the Cycle</h1>
                     <div className="instructions">
-                        instructions. how to make time zero here then start later <br/>
                         Welcome to Break the Cycle! <br/><br/>
                         There are 14 (blood) drops on the circle - each respresenting 2 days in an average menstrual cycle (28 days).<br/>
                         Click on each drop to answer questions about menstruation and period poverty. 
@@ -172,7 +171,11 @@ export class Container extends React.Component {
                         The timer will not stop while you read the correct answer, but make sure you absorb the information!
                         It's important to learn for the sake of understanding period poverty - and to win the game, of course. <br/><br/>
 
-                        At random drops, you will have the chance to collect/buy your menstrual products. Each product costs 2 coins.<br/>
+                        The drop will be red if you get the question correct, green if you get it incorrect. 
+                        Pretty unconventional, yes, but blood is red, and menstrual is <i>not wrong</i>.<br/><br/>
+
+                        At random drops, you will have the chance to collect/buy your menstrual products. Each product costs 2 coins.
+                        If you don't have enough money at that point, you won't be able to collect.<br/>
                         If you don't collect at least 4 products after one cycle (all the questions) and the time isn't over, you must begin again.<br/>
                         If the time ends before you collect at least 4 products, you lose.<br/>
                         In short, the objective is to <b>break the cycle</b> - literally, so you learn how to contribute to breaking the period poverty cycle, so girls everywhere can have their cycles without sacrificing their education and/or health.
