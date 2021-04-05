@@ -12,7 +12,8 @@ export class Container extends React.Component {
         this.state = { 
             message: "Break the Cycle",
             timeOver: false,
-            time: 5,
+            gameOver: false,
+            time: 1000,
             money: 0,
             products: 0,
             openQuestion: Array(questions.length).fill(false),
@@ -28,9 +29,16 @@ export class Container extends React.Component {
         this.setState({
             hasProduct: [false, false, true, false, true, false, false, true, true, false]
         })
+        setInterval(() => {
+            if (this.state.products >= 3) {
+                this.gameOver();
+                clearInterval()
+            }
+        }, 1000)
         setTimeout(() => {
             this.setState({ timeOver: true });
-        }, 1000*5) // TODO: shouldnt be hardcoded 
+            this.gameOver();
+        }, 1000*this.state.time) 
     }
 
     handleClick(i) {
@@ -95,11 +103,21 @@ export class Container extends React.Component {
 
     checkWin() {
         if (this.state.timeOver && this.state.products < 3) {
+            this.setState({ gameOver: true });
             return false;
         } else if (this.state.products >= 3) {
+            this.setState({ gameOver: true });
             return true;
         } else if (this.state.products < 3 && !this.state.timeOver) {
             this.restartCycle();
+        }
+    }
+
+    gameOver() {
+        if (this.checkWin()) {
+            this.setState({ message: "you win!" });
+        } else {
+            this.setState({ message: "you lose!" });
         }
     }
 
@@ -115,6 +133,22 @@ export class Container extends React.Component {
     }
 
     render() {
+        if (this.state.gameOver) {
+            return (
+                <StyledContainer>
+                    <Stats 
+                        money={this.state.money}
+                        products={this.state.products}
+                        time={this.state.time}
+                    />
+                    <h1 className="title">{this.state.message}</h1>
+                    <div className="game-over">
+                        game over info
+                    </div>
+                </StyledContainer>
+            )
+        }
+
         return (
             <StyledContainer>
                 <Stats 

@@ -11,6 +11,11 @@ export const StyledContainer = styled.div`
         left: 50%;
         transform: translateX(-50%);
     }
+
+    .game-over {
+        text-align: center;
+        margin-top: 6rem;
+    }
 `;
 
 
