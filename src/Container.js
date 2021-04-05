@@ -32,7 +32,7 @@ export class Container extends React.Component {
         console.log("length: "+questions.length)
         this.insertProducts();
         setInterval(() => {
-            if (this.state.products >= 3) {
+            if (this.state.products >= 4) {
                 this.setState({ stop: true });
                 this.gameOver();
                 clearInterval();
@@ -130,13 +130,13 @@ export class Container extends React.Component {
     }
 
     checkWin() {
-        if (this.state.timeOver && this.state.products < 3) {
+        if (this.state.timeOver && this.state.products < 4) {
             this.setState({ gameOver: true });
             return false;
-        } else if (this.state.products >= 3) {
+        } else if (this.state.products >= 4) {
             this.setState({ gameOver: true });
             return true;
-        } else if (this.state.products < 3 && !this.state.timeOver) {
+        } else if (this.state.products < 4 && !this.state.timeOver) {
             this.restartCycle();
         }
     }
