@@ -35,6 +35,9 @@ export class Container extends React.Component {
                 this.setState({ stop: true });
                 this.gameOver();
                 clearInterval();
+            } // else if all are used but time not over and not enough products 
+            else if (this.state.isAnswered.every( (val, i, arr) => val === arr[0] && arr[0] == true)) {
+                this.restartCycle();
             }
         }, 1000)
         setTimeout(() => {
@@ -104,6 +107,7 @@ export class Container extends React.Component {
         this.setState({ isCollected: isCollectedCopy });
     }
 
+    // where to put this 
     checkWin() {
         if (this.state.timeOver && this.state.products < 3) {
             this.setState({ gameOver: true });
@@ -126,6 +130,7 @@ export class Container extends React.Component {
 
     restartCycle() {
         this.setState({
+            message: "You don't have enough products... you must restart the cycle.",
             openQuestion: Array(questions.length).fill(false),
             dayColor: Array(questions.length).fill("lightgray"),
             isAnswered: Array(questions.length).fill(false),
