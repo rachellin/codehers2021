@@ -6,8 +6,8 @@ Period poverty is the inadequate access to menstrual hygiene tools and education
 **what the app does**
 The goal is for the user to become more educated about menstruation and period poverty. The timed nature of the game reflects the time that girls lose at school due to their inability to access period products or proper menstruation knowledge. At the end of the game, the website displays a few ways in which the user can contribute to ending/diminishing period poverty.
 
-![demo image 1 with the circle of drops](public/demo1.jpg)
-![demo image 2 with an opened question](public/demo2.jpg)
+![demo image 1 with the circle of drops](public/demo1.PNG)
+![demo image 2 with an opened question](public/demo2.PNG)
 
 ## Installation
 
