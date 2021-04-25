@@ -18,4 +18,4 @@ or alternatively
 then 
 ```npm start```
 
-View in your browser: [http://localhost:3000]http://localhost3000
+View in your browser: [http://localhost:3000](http://localhost3000)
